@@ -1,0 +1,8 @@
+{
+  "name": "slide-maker",
+  "version": "1.0.0",
+  "description": "Build beautiful slides from content briefs using AI. Supports IG carousels, PPT, newsletters, posters. Provide a content .md + reference images → get production-ready HTML + exported PNGs/MP4.",
+  "skills": [
+    "skills/slide-maker"
+  ]
+}

@@ -37,6 +37,14 @@ npx pageres-cli --help
 
 ## Installation
 
+### One-command install (Claude Code)
+
+```bash
+claude /plugin marketplace add iam-kristie/Slide-Maker
+```
+
+### Manual install (all agents)
+
 Copy the skill into your project's agent skills folder:
 
 ```bash
