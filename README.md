@@ -37,28 +37,31 @@ npx pageres-cli --help
 
 ## Installation
 
-Copy the skill into your project:
+Copy the skill into your project's agent skills folder:
 
 ```bash
 # Clone the repo (or download it)
 git clone https://github.com/iam-kristie/Slide-Maker.git
 
-# Copy the skill folder into your project
-cp -r slide-maker/.claude/ your-project/.claude/
+# For Claude Code:
+cp -r Slide-Maker/skills/slide-maker/ your-project/.claude/skills/slide-maker/
 
-# Copy the export script alongside it
-# (it lives at .claude/skills/slide-maker/capture-slides.mjs)
+# For Cursor:
+cp -r Slide-Maker/skills/slide-maker/ your-project/.cursor/rules/slide-maker/
+
+# For Antigravity:
+cp -r Slide-Maker/skills/slide-maker/ your-project/.agents/skills/slide-maker/
+
+# Or simply open this repo directly in your coding agent
 ```
 
-Or copy just the files you need:
+The skill consists of just 2 files:
 
 ```
-your-project/
-└── .claude/
-    └── skills/
-        └── slide-maker/
-            ├── SKILL.md              # Skill definition
-            └── capture-slides.mjs    # Export script
+skills/
+└── slide-maker/
+    ├── SKILL.md              # Skill definition (instructions for the AI)
+    └── capture-slides.mjs    # Export script (PNG + MP4)
 ```
 
 ## Quick Start
@@ -98,7 +101,7 @@ The agent will:
 The agent will automatically export using the capture script:
 
 ```bash
-node .claude/skills/slide-maker/capture-slides.mjs slides.html --output ./exports
+node skills/slide-maker/capture-slides.mjs slides.html --output ./exports
 ```
 
 Your exports appear in the `exports/` folder:
@@ -121,23 +124,29 @@ Safe zones ensure content stays clear of platform UI overlays (Instagram buttons
 
 ## Folder Structure
 
+This repo:
 ```
-your-project/
-├── .claude/
-│   └── skills/
-│       └── slide-maker/
-│           ├── SKILL.md               # Full skill definition (Agent Skills format)
-│           └── capture-slides.mjs     # PNG/MP4 export script
-├── AGENTS.md                          # Quick reference for all coding agents
-├── my-slides/
-│   ├── content.md                     # Your content brief
-│   ├── reference/                     # Visual style references
-│   ├── assets/                        # Your images, logos, icons
-│   ├── slides.html                    # Generated output
-│   └── exports/                       # Exported PNGs and MP4s
-│       ├── slide-1.png
-│       ├── slide-2.png
-│       └── ...
+Slide-Maker/
+├── skills/
+│   └── slide-maker/
+│       ├── SKILL.md               # Full skill definition (Agent Skills format)
+│       └── capture-slides.mjs     # PNG/MP4 export script
+├── AGENTS.md                      # Quick reference for all coding agents
+├── README.md
+└── assets/                        # Your template materials (logos, etc.)
+```
+
+Your slide project (inside this repo or your own project):
+```
+my-slides/
+├── content.md                     # Your content brief
+├── reference/                     # Visual style references
+├── assets/                        # Your images, logos, icons
+├── slides.html                    # Generated output
+└── exports/                       # Exported PNGs and MP4s
+    ├── slide-1.png
+    ├── slide-2.png
+    └── ...
 ```
 
 ## Exporting

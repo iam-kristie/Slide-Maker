@@ -2,7 +2,7 @@
 
 Turn a content brief (.md) into production-ready HTML slides and export as PNG/MP4.
 
-For the full skill definition with all specs, read `.claude/skills/slide-maker/SKILL.md`.
+For the full skill definition with all specs, read `skills/slide-maker/SKILL.md`.
 
 ## Quick Reference
 
