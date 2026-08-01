@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Node dependencies. The README asks users to run `npm install puppeteer-core`
+# themselves, so the manifest and lockfile it generates are local install
+# artifacts rather than project files.
+node_modules/
+package.json
+package-lock.json
