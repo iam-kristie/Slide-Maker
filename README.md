@@ -24,8 +24,10 @@ Any agent that reads `SKILL.md`, `AGENTS.md`, or `.claude/skills/` will pick up 
 
 - A coding agent (see above)
 - Google Chrome (for screenshot export)
-- Node.js 18+ (for the export script)
+- Patched Node.js 22.23.4+, 24.22.1+, or 26.12.1+ within those release lines (for the export script)
 - [Optional] ffmpeg (for animated MP4 video export)
+
+The repository's `.nvmrc` selects Node.js 22.23.4: run `nvm install && nvm use` before exporting. The export script also checks the runtime when copied into another project, so copying only the skill files does not bypass the [October 2026 Node.js security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases) requirement.
 
 The export script uses `puppeteer-core` to drive Chrome. Install it once:
 

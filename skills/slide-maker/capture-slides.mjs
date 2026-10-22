@@ -21,6 +21,15 @@ import path from 'path';
 import { existsSync, mkdirSync, readdirSync, unlinkSync, rmdirSync } from 'fs';
 import { execSync } from 'child_process';
 
+// Reject Node runtimes that predate the October 2026 security releases.
+const nodeVersion = /^(\d+)\.(\d+)\.(\d+)$/.exec(process.versions.node);
+const [nodeMajor, nodeMinor, nodePatch] = nodeVersion ? nodeVersion.slice(1).map(Number) : [];
+const securityFloor = { 22: [23, 4], 24: [22, 1], 26: [12, 1] }[nodeMajor];
+if (!nodeVersion || !securityFloor || nodeMinor < securityFloor[0] || (nodeMinor === securityFloor[0] && nodePatch < securityFloor[1])) {
+  console.error(`Update Node.js before exporting slides: use 22.23.4+, 24.22.1+, or 26.12.1+ in those supported release lines. Found ${process.version}.`);
+  process.exit(1);
+}
+
 // --- Find puppeteer-core ---
 const require_ = createRequire(import.meta.url);
 let puppeteer;
